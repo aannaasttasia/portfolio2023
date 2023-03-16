@@ -1,0 +1,62 @@
+.logo{
+    font-weight: 300;
+    padding: 1em;
+    font-size: 20px;
+
+}
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    background-color: black;
+    color: #FFFFFF;
+    padding: 0.5em 3em;
+
+    
+}
+
+.navlist{
+    display: flex;
+    font-weight: 800;
+
+}
+
+.navitem{
+    margin: 0.5em;
+    padding: 0.5em;
+    position: relative;
+
+}
+
+.navitem:hover{
+    cursor: pointer;
+}
+
+.navlist a::before, .navlist a::after
+{
+    position: absolute;
+    opacity: 1;
+    width: 0%;
+    height: 2px;
+    content: '';
+    background: #ffffff;
+    transition: all 0.2s;
+}
+
+.navlist a::before
+{
+    left: 0px;
+    top: 0px;
+}
+
+.navlist a::after
+{
+    right: 0px;
+    bottom: 0px;
+}
+
+.navlist a:hover::before, .navlist a:hover::after
+{
+    width: 100%;
+    
+}
