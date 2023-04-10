@@ -1,4 +1,4 @@
-export interface Movie{
+export interface MovieInterface{
     title : string,
     release_date : string,
     overview: string,

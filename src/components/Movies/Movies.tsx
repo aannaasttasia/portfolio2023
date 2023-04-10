@@ -1,19 +1,25 @@
 import * as React from "react";
-import { Movie } from "../../shared/interfaces";
+import { MovieInterface } from "../../shared/interfaces";
 // @ts-ignore
 import { IMG_API } from "../../shared/api.tsx";
 // @ts-ignore
 import { ApiRequest } from "../ApiRequest/ApiRequest.tsx";
 import "./css/Movies.scss";
+// @ts-ignore
+import MovieDetails from "../MovieDetails/MovieDetails.tsx";
+
 
 interface MoviesComponentType {
-  movies: Movie[];
+  movies: MovieInterface[];
   term: string;
+  selectedMovie: any;
+  buttonCliked: boolean;
 }
+
 export default class Movies extends React.Component<any, MoviesComponentType> {
   constructor(props: MoviesComponentType) {
     super(props);
-    this.state = { movies: [], term: "" };
+    this.state = { movies: [], term: "", selectedMovie: null, buttonCliked: false };
   }
 
   async componentDidMount() {
@@ -22,13 +28,22 @@ export default class Movies extends React.Component<any, MoviesComponentType> {
     console.log(moviesList);
   }
 
+  handleClick = (e: any) => {
+    this.setState({selectedMovie:  e});
+  }
+
   onInputChange = (event: any) => {
     this.setState({ term: event.target.value });
   };
 
-  mappedInfo = (movies: Movie[], term: string) => {
+  buttonClick = () => {
+    this.setState({buttonCliked:  !(this.state.buttonCliked)});
+    console.log(this.state.buttonCliked)
+  }
+
+  mappedInfo = (movies: MovieInterface[], term: string) => {
     return (
-      <div>
+      <div className="parrentTag">
         <div className="search-bar">
           <input
             type="text"
@@ -48,28 +63,40 @@ export default class Movies extends React.Component<any, MoviesComponentType> {
                 return movie;
               }
             })
-            .map((movie: Movie, id: number) => {
+            .map((movie: MovieInterface, id: number) => {
               return (
                 <div className="movie" key={id}>
                   <div className="parentTag">
-                    <p className="movie-img">
+                    <div className="movie-img" onClick={()=> {this.handleClick(movie); this.buttonClick()}}>
                       <img
                         className="img"
                         src={IMG_API + movie.poster_path}
                         alt="image of movie"
                       />
-                    </p>
-                    <h1 className="movie-title">{movie.title}</h1>
-                    <p className="movie-vote_average">
-                      {movie.vote_average.toFixed(1)}
-                    </p>
+                      <h1 className="movie-title">{movie.title}</h1>
+                      <p className="movie-vote_average">
+                        {movie.vote_average.toFixed(1)}
+                      </p>
+                    </div>
                   </div>
-                  <p className="movie-release_date">{movie.release_date}</p>
                 </div>
               );
             })}
         </div>
-      </div>
+        <div className="returnDetails">
+          <div className="showDetails">
+            {this.state.selectedMovie? 
+            this.state.buttonCliked?
+            <div className="movieDetails">
+              <a className="close" onClick={()=>this.buttonClick()}/>
+              <MovieDetails movie={this.state.selectedMovie} onBack={() =>{this.state.selectedMovie(null)}}/>
+            </div>
+            : false : false}
+          </div>
+          <div className={this.state.selectedMovie? this.state.buttonCliked?"color": "":""}></div>
+        </div>
+        
+    </div>
     );
   };
 

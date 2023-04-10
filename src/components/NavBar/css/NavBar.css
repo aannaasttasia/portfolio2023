@@ -1,6 +1,6 @@
 .logo {
-  font-weight: 300;
-  padding: 1em;
+  font-weight: 500;
+  padding: 0.4em;
   font-size: 20px;
 }
 
@@ -12,21 +12,22 @@
       -ms-flex-pack: justify;
           justify-content: space-between;
   background-color: black;
-  color: #FFFFFF;
-  padding: 0.5em 3em;
+  color: #ffffff;
+  padding: 0 2em;
 }
 
 .navlist {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  font-weight: 800;
+  font-weight: 500;
 }
 
 .navitem {
   margin: 0.5em;
-  padding: 0.5em;
+  padding: 0.2em;
   position: relative;
+  max-width: 100%;
 }
 
 .navitem:hover {
@@ -56,5 +57,11 @@
 
 .navlist a:hover::before, .navlist a:hover::after {
   width: 100%;
+}
+
+@media (max-width: 540px) {
+  .navlist {
+    display: none;
+  }
 }
 /*# sourceMappingURL=NavBar.css.map */

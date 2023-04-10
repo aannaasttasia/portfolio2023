@@ -1,0 +1,74 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap");
+.imgDetails {
+  width: 250px;
+}
+
+.image {
+  max-width: 100%;
+  height: 100%;
+  margin: 0px auto;
+}
+
+.movie-details {
+  background-color: white;
+  font-family: 'Roboto', sans-serif;
+  padding: 40px;
+}
+
+.release-date {
+  margin: 5px 5px 15px 5px;
+}
+
+.releaseText {
+  font-weight: bold;
+}
+
+.title-details {
+  font-weight: 600;
+  margin-bottom: 25px;
+}
+
+.parentMovie {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.overview {
+  font-size: 15px;
+  margin: 5px 5px 45px 5px;
+}
+
+.vote-count {
+  margin-left: 5px;
+}
+
+.info {
+  margin: 20px;
+}
+
+.infoVote {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 5px;
+}
+
+@media (max-width: 370px) {
+  .imgDetails {
+    width: 50px;
+  }
+  .movie-details {
+    background-color: white;
+    font-family: 'Roboto', sans-serif;
+    font-size: 5px;
+  }
+}
+/*# sourceMappingURL=MovieDetails.css.map */
